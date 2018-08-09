@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>A game to guess a number!</title>
+		<style>
+			*{
+				margin: 5px;
+				padding: 5px;
+			}
+			h3{
+				font: "微软雅黑";
+				color: dodgerblue;
+			}
+			#notice{
+				line-height:40px;
+			}
+			.container{
+				width:200px;
+				height: 300px;
+				border: 1px gray;
+				text-align: center;
+				margin: auto 30px;
+			}
+			#text{
+				width:100px;
+				height: 40px;
+				border: 1px gray;
+				background: lightgray;
+				font-size: 30px;
+				margin-top: 20px;
+				text-align: center;
+			}
+			#bt{
+				background-color: #1E90FF;
+				color: white;
+				border: 2px gray;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="game">
+				<h3>数字游戏，猜中有奖</h3>
+				<p id="notice">现在生成一个随机数字，0~100</p>
+				<input type="text" id="text" placeholder="0" /><br /><br />
+				<input type="button" id="bt" value="验证是否猜中"/>				
+			</div>
+			<p id="result">...</p>
+		</div>
+		<script type="text/javascript">
+			//get the objects
+			var oText=document.getElementById("text");
+			var oButton = document.getElementById("bt");
+			var oInfo=document.getElementById("result");			
+			
+			//generate a number
+			var number=parseInt(Math.random()*100)+1;
+			var times=0		
+			//click the button to assert the offset about the number
+			oButton.onclick=function(){
+				times++;				
+				if(oText.value==""){
+					alert("Please input a number you guessed!")
+				}else{
+					var num=Number(oText.value);
+					if(num==number){
+						oInfo.innerHTML="congrat, you guess "+times+" times!";
+					}else if(num>number){
+						
+						oInfo.innerHTML="The number you input is great!";
+					}else{
+						
+						oInfo.innerHTML="You input a little number";
+											}
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>
