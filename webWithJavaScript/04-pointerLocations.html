@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#view{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: skyblue;
+				margin: 30px;
+				display: inline-block;
+				
+			}
+			#test{
+				position: relative;
+				width: 100px;
+				height: 100px;
+				background: gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oView = document.getElementById('view');
+				var oTest = document.getElementById('test');
+				
+				oTest.onclick = function(ev){
+					ev=window.event||ev;
+					var self = ev.target||ev.srcElement;
+					 alert(ev.clientX);
+					 alert(ev.clientY);
+					 alert(ev.offsetX);
+					 alert(ev.offsetY);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="view">
+			<div id="test">位置</div>
+		</div>
+	</body>
+</html>

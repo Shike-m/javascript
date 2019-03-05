@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#view{
+				width: 200px;
+				height: 200px;
+				background: blue;
+			}
+			
+			#test {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oView = document.getElementById('view');
+				var oTest = document.getElementById('test');
+				
+				oView.onclick = function(){
+					ev = window.event||ev;
+					var self = ev.target||ev.srcElement;
+					alert(self.id);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="view">
+			<div id="test">Hello</div>
+		</div>
+	</body>
+</html>
