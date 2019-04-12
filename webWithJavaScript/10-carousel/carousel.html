@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            height: 300px;
+            width: 500px;
+            margin: 30px auto;
+            position:relative;
+        }
+        img{
+            display: block;
+            border: 0;
+        }
+        #view{
+            bottom: 20px;
+            left:0;
+            position: absolute;
+            width:100%;
+            height:14px;
+            text-align: center;
+        }
+        #view i{
+            height: 10px;
+            width: 30px;
+            border: 2px solid gray;
+            display: inline-block;
+            background: lightgray;
+            text-align: center;
+        }
+        #view .active {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="./image/01.jpg" id="img" />
+    <p id="view">
+        <i class='active'></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </p>
+</div>
+<script>
+    const OImg=document.getElementById('img');
+    const pages=document.getElementsByTagName('i');
+    let index=1;
+    let currPage=0;
+    let timer=null;
+    startTimer();
+
+    //Enable icon with pics
+    for(let i=1;i<=5;i++){
+        pages[i-1].onclick=()=>helper(i);
+        // {
+        //     stopTimer();
+        //     index=i-1;
+        //     alterPages();
+        //     startTimer();
+        // };
+    }
+
+   const helper=(i)=>{
+        // console.log("a click here:====",i);
+        stopTimer();
+        index=i-1;
+        alterPages();
+        startTimer();
+    }
+
+    //start timer
+    function startTimer(){
+        if(timer===null){
+            timer=setInterval(alterPages,2000);
+        }
+    }
+
+    function alterPages(){
+        index++;
+        if(index>5){
+            index=1;
+        }
+        let path="./image/0"+index+".jpg";
+        OImg.src=path;
+        pages[currPage].className="";
+        pages[index-1].className='active';
+
+        currPage=index-1;
+    }
+    //stop timer
+    function stopTimer(){
+        clearInterval(timer);
+        timer=null;
+    }
+
+</script>
+</body>
+</html>
