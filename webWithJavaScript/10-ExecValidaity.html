@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			window.onload=function(){
+				document.getElementById("country").onchange=checkZip();
+				document.getElementById("zip").oninput=checkZip();
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<form>
+				<label for="zip">Zip code:</label>
+				<input type="text" id="zip" />
+				<label for="country">Country:</label>
+				<select name="country" id="country">
+					<option value="cn">China</option>
+					<option value="us">the USA</option>
+					<option value="de">Germany</option>
+				</select><br/><br/>
+				<input type='submit' value="validaty"/>
+			</form>
+		<script type="text/javascript">
+			function checkZip(){
+				var constraints={
+					cn:'^(CH-)?\\d{4}$',
+					us:'^(US-)?\\d{5}$',
+					de:'^\\d{6}$'
+				}
+				var country=document.getElementById("country").value;
+				var ZipField=document.getElementById('zip');
+				var constraint = new RegExp(constraints[country],"");
+				if(constraint.test(ZipField.value)){
+					ZipField.setCustomvalidity("Right");
+					
+				}else{
+					ZipField.setCustomValidity("Please input right zip code!");
+					
+				}
+			}
+		</script>	
+		</div>
+	</body>
+</html>
